@@ -152,8 +152,8 @@ form.addEventListener('submit', (e) => {
   const fullName = nameInput.value;
   const position = positionInput.value;
   const city = officeSelect.value;
-  const age = ageInput.value;
-  const salary = salaryInput.value;
+  const age = +ageInput.value;
+  const salary = +salaryInput.value;
 
   fillNewEmployeeForm(fullName, position, city, age, salary);
 });
@@ -192,7 +192,7 @@ function fillNewEmployeeForm(fullName, position, city, age, salary) {
 
   nameInput.value = '';
   positionInput.value = '';
-  officeSelect.value = '';
+  officeSelect.value = 'London';
   ageInput.value = '';
   salaryInput.value = '';
 
@@ -202,7 +202,8 @@ function fillNewEmployeeForm(fullName, position, city, age, salary) {
 function showNotification(type, title, description) {
   const notification = document.createElement('div');
 
-  notification.className = `notification ${type}`;
+  notification.classList.add('notification');
+  notification.classList.add(type);
   notification.setAttribute('data-qa', 'notification');
   notification.innerHTML = `<h2>${title}</h2><p>${description}</p>`;
 
